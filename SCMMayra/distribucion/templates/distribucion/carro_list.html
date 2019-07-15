@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:distribucion_carro_changelist' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span> Actualizar Datos</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Placa</th>
+                        <th>Color</th>
+                        <th>Capacidad</th>
+                        <th>Registrado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in carro_list reversed %}
+                    <tr>
+                        <td>{{item.placa}}</td>
+                        <td>{{item.color}}</td>
+                        <td>{{item.capacidad}}</td>
+                        <td>{{item.created|date:'d/m/Y H:i'}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}  

@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:produccion_confeccion_add' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span> Registrar Confección de Producción</a>
+            <a href="{% url 'admin:produccion_confeccion_changelist' %}" class="btn btn-danger"><span class="fa fa-plus-circle"></span> Editar y/o Eliminar Confección</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Nombre Diseño</th>
+                        <th>Remalle</th>
+                        <th>Recta</th>
+                        <th>Recubridora</th>
+                        <th>Collaretera</th>
+                        <th>Elastiquera</th>
+                        <th>Botón y ojal</th>
+                        <th>Otros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for itemP in confeccion_list reversed %}
+                    <tr>
+                        <td>{{itemP.nombre_disenio|linebreaks}}</td>
+                        <td>{{itemP.remalle|linebreaks}}</td>
+                        <td>{{itemP.recta|linebreaks}}</td>
+                        <td>{{itemP.recubridora|linebreaks}}</td>
+                        <td>{{itemP.collaretera|linebreaks}}</td>
+                        <td>{{itemP.elastiquera|linebreaks}}</td>
+                        <td>{{itemP.boton_ojal|linebreaks}}</td>
+                        <td>{{itemP.otros|linebreaks}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

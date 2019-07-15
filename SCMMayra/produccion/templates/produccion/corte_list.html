@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:produccion_corte_add' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span> Registrar Corte de Producción</a>
+            <a href="{% url 'admin:produccion_corte_changelist' %}" class="btn btn-danger"><span class="fa fa-plus-circle"></span> Editar y/o Eliminar Corte</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Nombre Diseño</th>
+                        <th>Nombre Insumo</th>
+                        <th>Tallas x Mesa</th>
+                        <th>Estampados</th>
+                        <th>Bordados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for itemP in corte_list reversed %}
+                    <tr>
+                        <td>{{itemP.nombre_disenio}}</td>
+                        <td>{{itemP.nombre_insumo}}</td>
+                        <td>{{itemP.talla_mesa|linebreaks}}</td>
+                        <td>{{itemP.estampado|linebreaks}}</td>
+                        <td>{{itemP.bordado|linebreaks}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

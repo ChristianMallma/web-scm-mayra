@@ -1,0 +1,86 @@
+{% extends 'core/base.html' %} 
+
+{% block content %} 
+    <center><h1><strong>Módulos de Aplicación</strong></h1></center>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/fonts.css' %}">
+    
+    <section class="page-section">
+        <div class="container--1000">
+            <article class="site__content row column">
+                <ul class="site__content__nominateds rower wrap between">
+                    <li class="site__content__nominated">
+                            <div class="row column">
+                                <figure class="site__content__nominated--figure">
+                                    <a href="{% url 'proveedor' %}"><img class="form-control" src="{% static 'core/img/proveedores.png' %}"></a>
+                                    <img src="" alt="">
+                                </figure>
+                                <div class="site__content__nominated-head">
+                                    <h4 class="section-heading-lower"><b>Proveedores</b></h4>
+                                </div>
+                                <p class="mb-0 mbt">
+                                    <p>Relación con los Proveedores</p>
+                                </p>
+                                <p>
+                                    <a href="{% url 'proveedor' %}" class="btn btn-info btn-block">Ir a</a>
+                                </p>    
+                            </div>
+                    </li>
+                    <li class="site__content__nominated">
+                            <div class="row column">
+                                <figure class="site__content__nominated--figure">
+                                    <a href="{% url 'disenio' %}"><img class="form-control" src="{% static 'core/img/producción.png' %}"></a>
+                                    <img src="" alt="">
+                                </figure>
+                                <div class="site__content__nominated-head">
+                                    <h4 class="section-heading-lower"><b>Producción</b></h4>
+                                </div>
+                                <p class="mb-0 mbt">
+                                    <p>Relación con la Producción</p>
+                                </p>
+                                <p>
+                                    <a href="{% url 'disenio' %}" class="btn btn-info btn-block">Ir a</a>
+                                </p>    
+                            </div>
+                    </li>
+                    <li class="site__content__nominated">
+                            <div class="row column">
+                                <figure class="site__content__nominated--figure">
+                                    <a href="{% url 'transportes' %}"><img class="form-control" src="{% static 'core/img/distribución.png' %}"></a>
+                                    <img src="" alt="">
+                                </figure>
+                                <div class="site__content__nominated-head">
+                                    <h4 class="section-heading-lower"><b>Distribución</b></h4>
+                                </div>
+                                <p class="mb-0 mbt">
+                                    <p>Relación con la Distribución</p>
+                                </p>
+                                <p>
+                                    <a href="{% url 'transportes' %}" class="btn btn-info btn-block">Ir a</a>
+                                </p>    
+                            </div>
+                    </li>
+                    <li class="site__content__nominated">
+                            <div class="row column">
+                                <figure class="site__content__nominated--figure">
+                                    <a href="{% url 'cliente' %}"><img class="form-control" src="{% static 'core/img/clientes.png' %}"></a>
+                                    <img src="" alt="">
+                                </figure>
+                                <div class="site__content__nominated-head">
+                                    <h4 class="section-heading-lower"><b>Clientes</b></h4>
+                                </div>
+                                <p class="mb-0 mbt">
+                                    <p>Relación con los Clientes</p>
+                                </p>
+                                <p>
+                                    <a href="{% url 'cliente' %}" class="btn btn-info btn-block">Ir a</a>
+                                </p>    
+                            </div>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+{% endblock content %}

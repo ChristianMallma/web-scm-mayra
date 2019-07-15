@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SCM Confecciones Mayra S.A.C.</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'core/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="{% static 'core/css/metisMenu.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'core/css/sb-admin-2.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'core/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+            <div style="width: 1650px; text-align: center;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <br><br><br><br><br>
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                </div>
+            </div>
+</body>
+
+</html>

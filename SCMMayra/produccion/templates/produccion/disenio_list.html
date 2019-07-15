@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:produccion_disenio_add' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span> Registrar Diseño</a>
+            <a href="{% url 'admin:produccion_disenio_changelist' %}" class="btn btn-danger"><span class="fa fa-plus-circle"></span> Editar y/o Eliminar Diseños</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Tallas</th>
+                        <th>Observaciones</th>
+                        <th>Ingresado</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in disenio_list reversed %}
+                    <tr>
+                        <td>{{item.codigo_disenio}}</td>
+                        <td>{{item.nombre}}</td>
+                        <td>{{item.tallas}}</td>
+                        <td>{{item.observacion}}</td>
+                        <td>{{item.created|date:'d/m/Y H:i'}}</td>
+                        <td><a class="btn btn-success btn-block" href="{{ item.imagen.url }}">Ver</a></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+Nueva base de datos: mayrascm
+
+Administrador Web:
+ID: mayra
+PSS: adqui2019
+
+Clientes de prueba:
+ID: lizbeth
+PSS: lizi1234
+
+ID: milagros
+PSS: mili1234
+
+ID: christian
+PSS: chris1234
+
+Proveedores de prueba:
+ID: provInsBas
+PSS: prov123456
+
+ID: provInsExa
+PSS: prov654321

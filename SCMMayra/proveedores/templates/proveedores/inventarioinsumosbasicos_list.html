@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {% if request.user.username != "provInsBas" %}
+            <a href="{% url 'admin:proveedores_inventarioinsumosbasicos_add' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span> Registrar Insumo Básico</a>
+            <a href="{% url 'admin:proveedores_inventarioinsumosbasicos_changelist' %}" class="btn btn-danger"><span class="fa fa-plus-circle"></span> Editar y/o Eliminar Insumos</a>
+            <a href="{% url 'invInsumosBPrint' %}" target="print" class="btn btn-warning"><span class="fa fa-print"></span>Imprimir</a>        
+            {% endif %}
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>ID Prov.</th>
+                        <th>Proveedor</th>
+                        <th>Insumo</th>
+                        <th>Cantidad</th>
+                        <th>Precio de compra</th>
+                        <th>Observaciones</th>
+                        <th>Ingresado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for itemI in inventarioinsumosbasicos_list reversed %}
+                    <tr>
+                        <td>{{itemI.proveedor_id}}</td>
+                        <td>{{itemI.proveedor}}</td>
+                        <td>{{itemI.nombre_insumo}}</td>
+                        <td>{{itemI.cantidad}}</td>
+                        <td>{{itemI.precio_compra}}</td>
+                        <td>{{itemI.observacion}}</td>
+                        <td>{{itemI.created|date:'d/m/Y H:i'}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

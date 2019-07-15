@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:produccion_planeacion_add' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span> Registrar Planeación de Producción</a>
+            <a href="{% url 'admin:produccion_planeacion_changelist' %}" class="btn btn-danger"><span class="fa fa-plus-circle"></span> Editar y/o Eliminar Planeación</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Nombre Diseño</th>
+                        <th>Talla</th>
+                        <th>Cantidad</th>
+                        <th>Ingresado</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for itemP in planeacion_list reversed %}
+                    <tr>
+                        <td>{{itemP.codigo}}</td>
+                        <td>{{itemP.talla}}</td>
+                        <td>{{itemP.cantidad}}</td>
+                        <td>{{itemP.created|date:'d/m/Y H:i'}}</td>
+                        <td>{{itemP.observaciones}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}

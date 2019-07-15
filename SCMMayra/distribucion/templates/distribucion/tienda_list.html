@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:distribucion_tienda_changelist' %}" class="btn btn-success"><span class="fa fa-plus-circle"></span> Actualizar Datos</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Registrado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in tienda_list reversed %}
+                    <tr>
+                        <td>{{item.nombre_tienda}}</td>
+                        <td>{{item.direccion}}</td>
+                        <td>{{item.telefono}}</td>
+                        <td>{{item.created|date:'d/m/Y H:i'}}</td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}  

@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <br>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <a href="{% url 'admin:auth_user_changelist' %}" class="btn btn-danger"><span class="fa fa-plus-circle"></span> Eliminar Información del Cliente</a>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>Nombre de usuario</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    {% if  cliente.first_name != "mayra" and cliente.first_name != "provInsBas" and cliente.first_name != "provInsExa" %}
+                    <tr>
+                        <td>{{cliente.username}}</td>
+                        <td>{{cliente.first_name}}</td>
+                        <td>{{cliente.last_name}}</td>
+                        <td>{{cliente.email}}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock content %}  

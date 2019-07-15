@@ -1,0 +1,110 @@
+{% extends "coreWebPage/base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="container">   
+  <br>
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s4"><a 
+
+          {% if tab == 'sincomprar' %}
+            class="active"
+            href="#carrito-{{tab}}" 
+          {% else %}
+          href="#carrito" 
+          {% endif %}
+
+          onclick="location.href='{% url 'listarCarrito' %}'">Mi carrito de compras</a></li>
+        
+          <li class="tab col s4"><a 
+
+          {% if tab == 'pendientes' %}
+            class="active"
+            href="#carrito-{{tab}}" 
+          {% else %}
+          href="#carrito" 
+          {% endif %}
+
+          onclick="location.href='{% url 'listarPendientes' %}'">Mis compras pendientes</a></li>
+        
+          <li class="tab col s4"><a 
+
+          {% if tab == 'finalizadas' %}
+            class="active"
+            href="#carrito-{{tab}}" 
+          {% else %}
+          href="#carrito" 
+          {% endif %}
+
+          onclick="location.href='{% url 'listarFinalizados' %}'">Mis compras realizadas</a></li>
+        </ul>
+      </div>
+    
+
+      <div id="carrito-{{tab}}" class="col s12">
+          <ul class="collection with-header">
+              {% if tab == 'sincomprar' %}
+                <li class="collection-header">
+                  <center>
+                    <h1>
+                      Mi carrito de compras 
+                    </h1>
+                    <h2 id="total">
+                      Total: 0 Soles
+                    </h2>
+                  </center>
+                </li>
+              {% endif %}
+
+              {% for carrito in object_list %}
+                <li class="collection-item">
+                  <div>
+                    {{carrito.producto.nombre}} - S/ {{carrito.precio}}
+                    {% if tab == 'sincomprar' %}
+                      <form method="post" action="{% url 'eliminarCarrito' carrito.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn secondary-content">
+                          <i class="material-icons">delete</i>
+                        </button><br>
+                      </form>
+                    {% endif %}
+                    <br>
+                  </div>
+                </li>
+              {% empty %}
+                <li class="collection-item">
+                  <div>
+                    <center>
+                        No tienes productos en tu carrito
+                    </center>
+                  </div>
+                </li>
+              {% endfor %}
+          </ul>
+
+          <br>
+          <center>
+              <a href="{% url 'detallePago' %}" class="waves-effect waves-light btn-large">Procesar Compra</a>
+          </center>
+      </div>
+    </div>
+</div>
+{% endblock content %}
+<!--  Scripts-->
+{% block seccionjavascript %}
+    <script>
+        $(document).ready(function(){
+            var valor = 0
+            {% for carrito in object_list %}
+            valor = valor + {{carrito.precio}}
+            {% endfor %}
+            $("#total").html("Total: "+valor+" soles")
+        });
+  </script>
+{% endblock seccionjavascript %}
+  
+
+
+    
